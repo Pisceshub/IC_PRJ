@@ -5,7 +5,7 @@
  you may not use this file except in compliance with the License.        
  You may obtain a copy of the License at                                 
                                                                          
-     http://www.apache.org/licenses/LICENSE-2.0                          
+// Last Modified   : 2024-10-28 03:40:19
                                                                          
  Unless required by applicable law or agreed to in writing, software    
  distributed under the License is distributed on an "AS IS" BASIS,       
@@ -13,7 +13,8 @@
  See the License for the specific language governing permissions and     
  limitations under the License.                                          
  */
-
+`ifndef RISCV_IF_H
+`define RISCV_IF_H
 `define CpuResetAddr 32'h0
 
 `define RstEnable 1'b0
@@ -28,7 +29,7 @@
 `define False 1'b0
 `define ChipEnable 1'b1
 `define ChipDisable 1'b0
-`define JumpEnable 1'b1
+`define JumpEnable 1'b1 
 `define JumpDisable 1'b0
 `define DivResultNotReady 1'b0
 `define DivResultReady 1'b1
@@ -41,7 +42,7 @@
 `define RIB_ACK 1'b1
 `define RIB_NACK 1'b0
 `define RIB_REQ 1'b1
-`define RIB_NREQ 1'b0
+`define RIB_NREQ 1'b0 
 `define INT_ASSERT 1'b1
 `define INT_DEASSERT 1'b0
 
@@ -62,7 +63,7 @@
 `define INST_ADDI   3'b000
 `define INST_SLTI   3'b010
 `define INST_SLTIU  3'b011
-`define INST_XORI   3'b100
+`define INST_XORI   3'b100 
 `define INST_ORI    3'b110
 `define INST_ANDI   3'b111
 `define INST_SLLI   3'b001
@@ -74,7 +75,7 @@
 `define INST_LH     3'b001
 `define INST_LW     3'b010
 `define INST_LBU    3'b100
-`define INST_LHU    3'b101
+`define INST_LHU    3'b101 
 
 // S type inst
 `define INST_TYPE_S 7'b0100011
@@ -86,7 +87,7 @@
 `define INST_TYPE_R_M 7'b0110011
 // R type inst
 `define INST_ADD_SUB 3'b000
-`define INST_SLL    3'b001
+`define INST_SLL    3'b001 
 `define INST_SLT    3'b010
 `define INST_SLTU   3'b011
 `define INST_XOR    3'b100
@@ -102,7 +103,7 @@
 `define INST_DIVU   3'b101
 `define INST_REM    3'b110
 `define INST_REMU   3'b111
-
+ 
 // J type inst
 `define INST_JAL    7'b1101111
 `define INST_JALR   7'b1100111
@@ -162,3 +163,6 @@
 `define RegWidth 32
 `define RegNum 32        // reg num
 `define RegNumLog2 5
+
+`endif // DEFINE_H
+
