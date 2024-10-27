@@ -1,10 +1,11 @@
+
 module riscv_soc(
    input    wire                clk         ,
    input    wire                rst_n       
 );
     wire    [31:0]  cpu_inst_addr_o;
     wire    [31:0]  rom_inst_o;
-
+ 
     riscv_cpu u_riscv_cpu(
         .clk         (clk               ),
         .rst_n       (rst_n             ),

@@ -1,3 +1,4 @@
+`include "/home/ICer/ic_prjs/riscv/digital_data/src/riscv/include/define.h"
 module ex(
     //from id_ex
     input  wire     [31:0]          inst_i      ,

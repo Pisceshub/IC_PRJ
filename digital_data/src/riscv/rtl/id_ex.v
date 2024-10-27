@@ -1,4 +1,5 @@
-//`include "/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/gen_dff.v"
+`include "/home/ICer/ic_prjs/riscv/digital_data/src/riscv/include/define.h"
+
 module id_ex(
     input   wire                    clk         ,
     input   wire                    rst_n       ,

@@ -15,6 +15,7 @@ module riscv_cpu(
     wire    [31:0]  ifetch_addr_o;
     wire    [31:0]  ifetch_inst_o;
     
+
     ifetch u_ifetch(
         .pc_addr_i          (pc_reg_pc_addr_o   ),
         .rom_inst_i         (inst_i             ),
@@ -26,14 +27,14 @@ module riscv_cpu(
     wire    [31:0]  if_id_addr_o;
     wire    [31:0]  if_id_inst_o;
 
-    if_id u_if_id(
-        .clk         (clk           ),
-        .rst_n       (rst_n         ),       
-        .inst_i      (ifetch_inst_o ),
-        .inst_addr_i (ifetch_addr_o ),
-        .inst_addr_o (if_id_addr_o  ),
-        .inst_o      (if_id_inst_o  )
-    );
+	if_id u_if_id(
+		.clk         (clk           ),
+		.rst_n       (rst_n         ),       
+		.inst_i      (ifetch_inst_o ),
+		.inst_addr_i (ifetch_addr_o ),
+		.inst_addr_o (if_id_addr_o  ),
+		.inst_o      (if_id_inst_o  )
+	);
 
     //id to id_ex 
     wire    [31:0]  regs_rs1_data_o;

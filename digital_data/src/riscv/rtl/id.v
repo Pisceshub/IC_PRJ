@@ -1,3 +1,4 @@
+`include "/home/ICer/ic_prjs/riscv/digital_data/src/riscv/include/define.h"
 module id (
     input   wire    [31:0]      inst_i      ,
     input   wire    [31:0]      inst_addr_i ,
@@ -13,7 +14,8 @@ module id (
     output  reg     [31:0]      op1_o       ,
     output  reg     [31:0]      op2_o       ,
     output  reg     [ 4:0]      rd_addr_o   ,
-    output  reg                 reg_wen_o     
+    output  reg                 reg_wen_o   
+ 
 );
     wire    [ 6:0]   opcode;
     wire    [ 4:0]   rd;
@@ -36,7 +38,7 @@ module id (
         inst_o      =   inst_i;
         inst_addr_o =   inst_addr_i;
         case(opcode) 
-            `INST_TYPE_I: begin
+            `INST_TYPE_I:   begin
                 case(func3) 
                     `INST_ADDI: begin
                         rs1_addr_o  = rs1;
@@ -65,7 +67,7 @@ module id (
                         op2_o       = rs2_data_i;
                         rd_addr_o   = rd;
                         reg_wen_o   = 1'b1;
-                    end
+					end
                     default:begin
                         rs1_addr_o  = 5'd0;
                         rs2_addr_o  = 5'd0; 
@@ -73,13 +75,13 @@ module id (
                         op2_o       = 32'd0;
                         rd_addr_o   = 5'd0;
                         reg_wen_o   = 1'b0;
-                    end
+					end
                 endcase
-            end
-            `INST_TYPE_B:begin
-                case(func3):
+			end
+            //`INST_TYPE_B:begin
+            //    case(func3):
                     
-            default:begin
+            default:    begin
                 rs1_addr_o  = 5'd0;
                 rs2_addr_o  = 5'd0; 
                 op1_o       = 32'd0;
