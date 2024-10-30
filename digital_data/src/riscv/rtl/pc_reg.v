@@ -5,7 +5,7 @@ module pc_reg(
     );
     always@(posedge clk or negedge rst_n) begin
         if(!rst_n) begin
-            pc_addr_o <= 'd0;
+// Last Modified   : 2024-10-28 04:46:55
         end
         else begin
             pc_addr_o <= pc_addr_o +'d4;

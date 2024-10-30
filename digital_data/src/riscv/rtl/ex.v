@@ -12,8 +12,7 @@ module ex(
     output reg      [ 4:0]          wr_addr_o   ,
     output reg      [31:0]          wr_data_o   ,
     output reg                      wr_en_o    
-);
-    
+); 
     wire    [ 6:0]   opcode;
     wire    [ 4:0]   rd;
     wire    [ 3:0]   func3;
@@ -21,8 +20,7 @@ module ex(
     wire    [ 4:0]   rs2;
     wire    [ 6:0]   func7;
     wire    [11:0]   imm;
-
-    
+ 
     assign opcode   =   inst_i[ 6: 0];
     assign rd       =   inst_i[11: 7];
     assign func3    =   inst_i[14:12];

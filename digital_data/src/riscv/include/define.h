@@ -5,7 +5,7 @@
  you may not use this file except in compliance with the License.        
  You may obtain a copy of the License at                                 
                                                                          
-// Last Modified   : 2024-10-28 03:40:19
+// Last Modified   : 2024-10-28 05:41:25
                                                                          
  Unless required by applicable law or agreed to in writing, software    
  distributed under the License is distributed on an "AS IS" BASIS,       
@@ -164,5 +164,6 @@
 `define RegNum 32        // reg num
 `define RegNumLog2 5
 
+`define KKK 5
 `endif // DEFINE_H
 

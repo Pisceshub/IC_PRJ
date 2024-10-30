@@ -5,7 +5,6 @@ module riscv_cpu(
     output  wire    [31:0]          inst_addr_o 
 );
     //pc to if 
-    wire    [31:0]  pc_reg_pc_addr_o;
     pc_reg u_pc_reg(
         .clk         (clk               ),
         .rst_n       (rst_n             ),

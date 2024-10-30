@@ -1,0 +1,50 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+pc_reg	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/pc_reg.v	/^module pc_reg($/;"	m
+clk	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/pc_reg.v	/^    input   wire            clk         ,$/;"	v
+rst_n	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/pc_reg.v	/^    input   wire            rst_n       ,$/;"	v
+pc_addr_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/pc_reg.v	/^    output  reg  [31:0]     pc_addr_o    $/;"	v
+regs	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/regs.v	/^module regs($/;"	m
+clk	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/regs.v	/^    input   wire                    clk                 ,$/;"	v
+rst_n	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/regs.v	/^    input   wire                    rst_n               ,$/;"	v
+reg1_raddr_i	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/regs.v	/^    input   wire    [ 4:0]          reg1_raddr_i        ,$/;"	v
+reg2_raddr_i	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/regs.v	/^    input   wire    [ 4:0]          reg2_raddr_i        ,$/;"	v
+reg1_rdata_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/regs.v	/^    output  reg     [31:0]          reg1_rdata_o        ,$/;"	v
+reg2_rdata_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/regs.v	/^    output  reg     [31:0]          reg2_rdata_o        ,$/;"	v
+reg_waddr_i	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/regs.v	/^    input   wire    [ 4:0]          reg_waddr_i         ,$/;"	v
+reg_wdata_i	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/regs.v	/^    input   wire    [31:0]          reg_wdata_i         ,$/;"	v
+reg_wen	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/regs.v	/^    input   wire                    reg_wen     $/;"	v
+31	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/regs.v	/^    reg [31:0]      regs[0:31];$/;"	v
+31	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/regs.v	/^    reg [31:0]      regs[0:31];$/;"	v
+riscv_cpu	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^module riscv_cpu($/;"	m
+clk	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    input   wire                    clk         ,$/;"	v
+rst_n	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    input   wire                    rst_n       ,$/;"	v
+inst_i	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    input   wire    [31:0]          inst_i      ,$/;"	v
+inst_addr_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    output  wire    [31:0]          inst_addr_o $/;"	v
+ifetch_addr_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire    [31:0]  ifetch_addr_o;$/;"	v
+ifetch_inst_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire    [31:0]  ifetch_inst_o;$/;"	v
+if_id_addr_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire    [31:0]  if_id_addr_o;$/;"	v
+if_id_inst_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire    [31:0]  if_id_inst_o;$/;"	v
+regs_rs1_data_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire    [31:0]  regs_rs1_data_o;$/;"	v
+regs_rs2_data_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire    [31:0]  regs_rs2_data_o;$/;"	v
+id_rs1_addr_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire    [ 4:0]  id_rs1_addr_o;$/;"	v
+id_rs2_addr_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire    [ 4:0]  id_rs2_addr_o;$/;"	v
+id_inst_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire    [31:0]  id_inst_o;$/;"	v
+id_addr_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire    [31:0]  id_addr_o;$/;"	v
+id_op1_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire    [31:0]  id_op1_o;$/;"	v
+id_op2_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire    [31:0]  id_op2_o;$/;"	v
+id_rd_addr_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire    [ 4:0]  id_rd_addr_o;$/;"	v
+id_reg_wen	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire            id_reg_wen;$/;"	v
+ex_wr_addr_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire    [ 4:0]          ex_wr_addr_o;         $/;"	v
+ex_wr_data_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire    [31:0]          ex_wr_data_o;       $/;"	v
+ex_wr_en_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire                    ex_wr_en_o;    $/;"	v
+id_ex_inst_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire    [31:0]      id_ex_inst_o;      $/;"	v
+id_ex_addr_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire    [31:0]      id_ex_addr_o;$/;"	v
+id_ex_op1_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire    [31:0]      id_ex_op1_o;       $/;"	v
+id_ex_op2_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire    [31:0]      id_ex_op2_o;       $/;"	v
+id_ex_rd_addr_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire    [ 4:0]      id_ex_rd_addr_o;   $/;"	v
+id_ex_reg_wen_o	/home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v	/^    wire                id_ex_reg_wen_o; $/;"	v

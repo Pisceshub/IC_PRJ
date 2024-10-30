@@ -1,0 +1,9 @@
+*.swp
+*.swk
+*.swm
+*.swn
+*.swo
+*.swp
+*sim*
+.*log
+
