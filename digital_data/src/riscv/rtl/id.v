@@ -76,8 +76,6 @@ module id (
                     end
                 endcase
             end
-            `INST_TYPE_B:begin
-                case(func3):
                     
             default:begin
                 rs1_addr_o  = 5'd0;

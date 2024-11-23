@@ -1,5 +1,4 @@
-/home/ICer/ic_prjs/riscv/digital_data/src/riscv/tb/harness.v
-/home/ICer/ic_prjs/riscv/digital_data/src/riscv/tb/riscv_tb.v
+# /home/ICer/ic_prjs/riscv/digital_data/src/riscv/utils/defines/define.vh
 /home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/ex.v
 /home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/gen_dff.v
 /home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/id_ex.v
@@ -11,8 +10,4 @@
 /home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_cpu.v
 /home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/riscv_soc.v
 /home/ICer/ic_prjs/riscv/digital_data/src/riscv/rtl/rom.v
-
-
-
-
 

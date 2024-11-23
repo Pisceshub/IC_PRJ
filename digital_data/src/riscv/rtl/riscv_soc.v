@@ -15,4 +15,6 @@ module riscv_soc(
         .inst_addr_i(cpu_inst_addr_o    ),
         .inst_o     (rom_inst_o         )    
     );   
+
+
 endmodule    

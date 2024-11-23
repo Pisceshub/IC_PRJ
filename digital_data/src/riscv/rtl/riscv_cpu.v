@@ -4,7 +4,23 @@ module riscv_cpu(
     input   wire    [31:0]          inst_i      ,
     output  wire    [31:0]          inst_addr_o 
 );
+
+    /*autoreg*/
+    //Start of automatic reg
+    //Define flip-flop registers here
+    //Define combination registers here
+    //End of automatic reg
     //pc to if 
+    
+    /*autowire*/
+    //Start of automatic wire
+    //Define assign wires here
+    //Define instance wires here
+    wire                        id_reg_wen_o                    ;
+    //End of automatic wire
+
+
+
     wire    [31:0]  pc_reg_pc_addr_o;
     pc_reg u_pc_reg(
         .clk         (clk               ),
@@ -14,14 +30,15 @@ module riscv_cpu(
     //if to if_id 
     wire    [31:0]  ifetch_addr_o;
     wire    [31:0]  ifetch_inst_o;
-    
-    ifetch u_ifetch(
-        .pc_addr_i          (pc_reg_pc_addr_o   ),
-        .rom_inst_i         (inst_i             ),
-        .if2rom_addr_o      (inst_addr_o        ),
-        .inst_addr_o        (ifetch_addr_o      ),
-        .inst_o             (ifetch_inst_o      ) 
+
+    ifetch u_ifetch(/*autoinst*/
+        .pc_addr_i              (pc_reg_pc_addr_o               ), //input
+        .rom_inst_i             (inst_i                         ), //input
+        .if2rom_addr_o          (inst_addr_o                    ), //output
+        .inst_addr_o            (ifetch_addr_o                  ), //output
+        .inst_o                 (ifetch_inst_o                  )  //output
     );
+
     //if_id to id
     wire    [31:0]  if_id_addr_o;
     wire    [31:0]  if_id_inst_o;

@@ -1,12 +1,21 @@
-include ../../script/project.mk
 
 
 ################################# CMD #########################################
-FILE_OPTS = -f $(PROJECT_SOCDEFLIST) -f $(PROJECT_SOCFILELIST) 
+FILE_OPTS = -f $(PROJECT_SIMTBFILE) # -f $(PROJECT_SOCFILELIST) 
 
 
 ANALYSIS_OPTS = +v2k -l $(PROJECT_SIMLOG)/analysis.log -sverilog
 COMPILE_OPTS  = +v2k -l $(PROJECT_SIMLOG)/compile.log  -sverilog +lint=DSFIF 
+UVM_CMP   = -ntb_opts uvm-1.2 +vc  
+run:
+	$(ANALYSIS) &&  $(COMPILE) && $(ELABORATE) && $(SIMULATE) 
+
+ncrun:
+	$(SIMULATE) 
+
+cmp:
+	$(ANALYSIS) &&  $(COMPILE) && $(ELABORATE) 
+
 
 
 ################################# START ANALYSIS ######################################
@@ -35,9 +44,12 @@ INCDIRS 	= 	+incdir+$(PROJECT_SRC)
 VERDI_CMD   =   -2001 -sveriolg -ssf $(vcs_work_path)/simv.vdb \
 				+incdir+$(rtl_path)  -y $(rtl_path) -y $(glbl_path) +libext+.v -ssy
 	
-COMPILE = vlogan 	$(INCDIRS) \
+COMPILE = vlogan 	$(UVM_CMP) \
+		  			$(INCDIRS) \
 					$(COMPILE_OPTS) \
-					-f $(PROJECT_SOCDEFLIST) -f $(PROJECT_SOCFILELIST) 
+					$(FILE_OPTS) 
+					# -f $(PROJECT_SIMTBFILE) # -f $(PROJECT_SOCFILELIST) 
+					
 
 vcmp:
 	$(COMPILE)
@@ -56,7 +68,8 @@ vcmp:
 
 
 ################################# START ELABORATE #####################################
-ELABORATE_CMD 	= -full64  -debug_acc+all  -sverilog -Mupdate -licqueue -t ps  +lint=TFIPC-L   +lint=PCWM 	  -CFLAGS -DVCS
+ELABORATE_CMD 	= -sverilog -R -full64    -timescale=1ns/10ps -debug_acc+all  -Mupdate -licqueue -t ps  +lint=TFIPC-L   +lint=PCWM   -CFLAGS -DVCS -DVCS $(UVM_HOME)/src/dpi/uvm_dpi.cc
+
 # -Mupdate -licqueue   -DVCS $(UVM_HOME)/src/dpi/uvm_dpi.cc
 DEBUSSY_PLI=-P $(VERDI_HOME)/share/PLI/VCS/linux64/novas.tab  $(VERDI_HOME)/share/PLI/VCS/linux64/pli.a
 # code coverage command
@@ -65,19 +78,20 @@ CCC_NAME = -cm_name simv
 CCC_DIR  = -cm_dir $(PROJECT_SIMEXCE)/simv.vdb
 
 # # 将上面生成的库文件，以及可能用到的xilinx IP的库文件，生成仿真的可执行文件。
-ELABORATE = vcs		$(ELABORATE_CMD) \
-					$(DEBUSSY_PLI) \
-			$(CCC_OPTS) $(CCC_NAME)	\
-			$(CCC_DIR)\
-			-top	harness	\
+ELABORATE = vcs	-top	harness	\
+			$(ELABORATE_CMD) \
+			$(UVM_CMP)		\
 			-l $(PROJECT_SIMLOG)/elaborate.log \
 			-Mdir=$(PROJECT_SIMEXCE) \
-			-o $(PROJECT_SIMEXCE)/simv
+			-o $(PROJECT_SIMEXCE)/simv \
+			$(DEBUSSY_PLI) \
+			$(CCC_OPTS) $(CCC_NAME)	\
+			$(CCC_DIR)\
 			 
 vela:
 	$(ELABORATE)
-cmp:
-	$(ANALYSIS) $(COMPILE) $(ELABORATE) 
+
+
 # -debug_pp \
 # -t ps \
 # -licqueue \
@@ -103,7 +117,8 @@ cmp:
 # 执行上面生成的simv.o可执行文件，进行仿真。
 # 由于需要生成适用于verdi的fsdb文件，所以在bench中还需要添加任务语句。
 
-SIMULATE =  $(PROJECT_SIMEXCE)/simv \
+SIMULATE =  $(UVM_CMP) \
+			$(PROJECT_SIMEXCE)/simv \
 			-l $(PROJECT_SIMLOG)/simulate.log \
 			-k $(PROJECT_SIMEXCE)/ucli.key \
 			${CCC_OPTS} \
@@ -130,12 +145,14 @@ verdi:
 
 VCS = vcs -R -full64											\
 	+v2k														\
+	 -timescale=1ns/10ps				\
+	$(UVM_CMP)													\
 	-debug_access												\
 	$(ALL_DEFINE)												\
 	-sverilog													\
-    $(filelist)												\
-	-l $(log_file_path)/vcs_compile.log							\
-	-Mupdate
+    $(FILE_OPTS) 											\
+	$(COMPILE_OPTS) 										\
+	-Mupdate													
 #VCS = vcs -sverilog  +v2k      \
 	-debug_all				 \
 	+notimingcheck				 \
@@ -146,7 +163,8 @@ VCS = vcs -R -full64											\
 	-o  $(OUTPUT)				 \
 	-l  compile.log                \
         -f file_list		  
-
+vcs:
+	$(VCS)
 ################################# VERDI  #########################################
 
 FLASH_UPDATE = 	cp /mnt/hgfs/linux_share_file/M0Prj0/code.hex  $(software_path) \
@@ -157,26 +175,30 @@ CDWORK  =  cd $(prj_path)
 COVER = dve -covdir *.vdb 
 
 ################################# CLEAN #########################################
-CLEAN= \
-	rm -rf  $(vcs_work_path)/64 		\
-			$(vcs_work_path)/csrc 		\
-			$(vcs_work_path)/verdiLog 	\
-			$(vcs_work_path)/*.log 		\
-			$(vcs_work_path)/simv.fsdb 	\
-			$(vcs_work_path)/ucli.key 	\
-			$(vcs_work_path)/inter.vpd  \
-			$(vcs_work_path)/novas* 	\
-			$(vcs_work_path)/DVEfiles 	\
-			$(vcs_work_path)/simv 		\
-			$(vcs_work_path)/simv.daidir\
-			$(vcs_work_path)/vdCovLog 	\
-			$(vcs_work_path)/simv.vdb 	\
-			$(vcs_work_path)/8vc_hdrs.h
+CLEAN= 		rm -rf  \
+			$(PROJECT_SIMPATH)/64 		   \
+			$(PROJECT_SIMPATH)/AN.DB 	   \
+			$(PROJECT_SIMPATH)/csrc        \
+			$(PROJECT_SIMPATH)/verdiLog    \
+			$(PROJECT_SIMPATH)/*.log       \
+			$(PROJECT_SIMPATH)/simv.fsdb   \
+			$(PROJECT_SIMPATH)/ucli.key    \
+			$(PROJECT_SIMPATH)/inter.vpd   \
+			$(PROJECT_SIMPATH)/novas*      \
+			$(PROJECT_SIMPATH)/DVEfiles    \
+			$(PROJECT_SIMPATH)/simv        \
+			$(PROJECT_SIMPATH)/simv.daidir \
+			$(PROJECT_SIMPATH)/vdCovLog    \
+			$(PROJECT_SIMPATH)/simv.vdb    \
+			$(PROJECT_SIMPATH)/vc_hdrs.h	\
+			$(PROJECT_SIMPATH)/exce	\
+			$(PROJECT_SIMPATH)/log	\
+
 #start clean 
 VCLEAN= \
 	rm -rf ./csrc ./log_file/*.log  ./verdiLog  ./file_list ./*.log ./vcs_lib ./novas.conf ./simv* ./ucli.key 
 clean:
-	$(VCLEAN)
+	$(CLEAN)
 ################################# ERROR #########################################
 VERROR= \
 	grep error  $(log_file_path)/*.log

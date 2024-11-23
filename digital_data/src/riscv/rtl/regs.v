@@ -11,7 +11,14 @@ module regs(
     input   wire    [31:0]          reg_wdata_i         ,
     input   wire                    reg_wen     
     );
+
+    /*autoreg*/
+    //Start of automatic reg
+    //Define flip-flop registers here
+    //Define combination registers here
+    //End of automatic reg
     reg [31:0]      regs[0:31];
+
     always@(posedge clk or negedge rst_n) begin
         if(!rst_n) begin
             reg1_rdata_o <= 'd0;

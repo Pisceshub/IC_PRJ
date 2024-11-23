@@ -70,7 +70,7 @@ module ex(
                     end
                 endcase
             end
-            default:begin
+            default: begin
                 wr_data_o  = 32'd0;
                 wr_addr_o  = 5'd0; 
                 wr_en_o    = 1'b0;

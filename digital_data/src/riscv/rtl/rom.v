@@ -7,4 +7,8 @@ module rom(
     always@(*) begin
         inst_o = rom_mem[inst_addr_i>>2];
     end
+    initial begin
+        $readmemb("/home/ICer/ic_prjs/riscv/digital_data/src/riscv/hex/add_test.hex",rom_mem);
+    end
+
 endmodule
